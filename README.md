@@ -32,7 +32,6 @@ O SGF é uma aplicação web para centralizar e otimizar o controle de veículos
 - Escalabilidade para futuras funcionalidades.
 
 ## Recursos do Projeto
-
 ### Tecnológicos
 - Framework de Desenvolvimento: Next.js/React
 - Linguagem de Programação: TypeScript
@@ -143,3 +142,6 @@ graph TD
 ```
 
 ---
+
+Protótipos: 
+https://www.figma.com/design/vQCntJoRuYEAicqFbgdR2b/Untitled?node-id=0-1&m=dev&t=B2vB2ZhBcz3xJMDb-1
