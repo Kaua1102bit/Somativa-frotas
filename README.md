@@ -1,32 +1,22 @@
 # 🚚 Sistema de Gerenciamento de Frotas (SGF) – LogiMax Transportes
 
-## 🧾 Briefing
-
+## Briefing
 O SGF é uma aplicação web para centralizar e otimizar o controle de veículos, motoristas e viagens da LogiMax Transportes. O sistema digitaliza o processo antes feito em quadro branco, permitindo cadastro de veículos e motoristas, criação de viagens e acompanhamento de rotas e quilometragem.
 
----
-
-## 🎯 Objetivo
-
+## Objetivo do Projeto
 - Gerenciar informações sobre veículos, motoristas e viagens.
 - Controlar quais motoristas estão com quais veículos e para onde estão indo.
 - Permitir atualização da quilometragem ao final de cada viagem.
 - Emitir alertas de manutenção preventiva a cada 10.000 km rodados.
 - Proteger o acesso ao sistema com autenticação e papéis de usuário (Gestor / Motorista).
 
----
+## Público-Alvo
+- Gestor de Frota: cadastra veículos e motoristas, cria viagens e monitora o uso da frota.
+- Motorista: visualiza apenas as viagens atribuídas a ele e atualiza a quilometragem ao final.
 
-## 👥 Público-Alvo
+## Levantamento de Requisitos do Projeto
 
-- **Gestor de Frota:** cadastra veículos e motoristas, cria viagens e monitora o uso da frota.
-- **Motorista:** visualiza apenas as viagens atribuídas a ele e atualiza a quilometragem ao final.
-
----
-
-## ⚙️ Requisitos
-
-### Funcionais
-
+### Requisitos Funcionais
 - Cadastro e autenticação de usuários (Gestor/Motorista) com diferentes níveis de acesso.
 - CRUD de veículos (placa, modelo, ano, kmAtual).
 - CRUD de motoristas (nome, CNH, telefone).
@@ -35,82 +25,26 @@ O SGF é uma aplicação web para centralizar e otimizar o controle de veículos
 - Alertas de manutenção preventiva a cada 10.000 km.
 - Dashboard de monitoramento.
 
-### Não Funcionais
-
+### Requisitos Não Funcionais
 - Segurança com JWT e bcrypt.
 - Interface simples e responsiva.
 - Desempenho otimizado.
 - Escalabilidade para futuras funcionalidades.
 
----
+## Recursos do Projeto
 
-## 💾 Tecnologias
+### Tecnológicos
+- Framework de Desenvolvimento: Next.js/React
+- Linguagem de Programação: TypeScript
+- Banco de Dados: MongoDB (Mongoose)
+- Autenticação: JWT + bcrypt
+- Estilos: SCSS
+- GitHub, VsCode, Figma
 
-- **Frontend/Backend:** Next.js (React + App Router)
-- **Linguagem:** TypeScript
-- **Banco de Dados:** MongoDB (Mongoose)
-- **Autenticação:** JWT + bcrypt
-- **Estilos:** SCSS
+### Pessoal
+- Desenvolvedor Full Stack
 
----
-
-## 🧩 Diagramas
-
-### Diagrama de Classes
-
-```
-+------------------+        +------------------+        +------------------+
-|    Motorista     |        |     Viagem       |        |     Veiculo      |
-+------------------+        +------------------+        +------------------+
-| id               |<------>| idMotorista      |        | id               |
-| nome             |        | idVeiculo        |<------>| placa            |
-| cnh              |        | origem           |        | modelo           |
-| telefone         |        | destino          |        | ano              |
-+------------------+        | status           |        | kmAtual          |
-                            | dataInicio       |        | alertaManutencao |
-                            | dataFim          |        +------------------+
-                            | kmFinal          |
-                            +------------------+
-```
-
-### Diagrama de Casos de Uso
-
-```
-Ator: Gestor de Frota
-  ├─ Cadastrar/Editar/Excluir Veículos
-  ├─ Cadastrar/Editar/Excluir Motoristas
-  └─ Criar Viagem (associar motorista e veículo)
-
-Ator: Motorista
-  ├─ Visualizar Viagens atribuídas
-  └─ Atualizar quilometragem ao finalizar
-
-Ator: Sistema
-  └─ Emitir alerta de manutenção
-```
-
-### Diagrama de Fluxo – Login
-
-```
-Usuário → [Tela de Login]
-    ↓
-[Insere e-mail/senha]
-    ↓
-[Sistema valida credenciais]
-    ↓
-┌───────────────┬───────────────┐
-│ Credenciais   │ Credenciais   │
-│ válidas       │ inválidas     │
-├───────────────┼───────────────┤
-│ Gera JWT      │ Exibe erro    │
-│ Redireciona   │ Permanece     │
-│ para dashboard│ na tela       │
-└───────────────┴───────────────┘
-```
-
----
-
-## ⚖️ Análise de Risco
+## Análise de Risco
 
 | Risco                           | Probabilidade | Impacto | Ação Preventiva                                  |
 |----------------------------------|--------------|---------|--------------------------------------------------|
@@ -119,33 +53,93 @@ Usuário → [Tela de Login]
 | Falhas de login ou autenticação  | Média        | Alta    | Utilizar JWT com expiração e bcrypt seguro        |
 | Dados inconsistentes de viagens  | Baixa        | Alta    | Regras de integridade entre motorista e veículo   |
 
----
+## Diagramas
 
-## 🚀 Como rodar o projeto
+### 1. Classe
 
-1. **Clone o repositório**
-2. **Instale as dependências**
-   ```bash
-   npm install
-   ```
-3. **Configure o arquivo `.env.local`** na raiz:
-   ```
-   MONGODB_URI=mongodb://localhost:27017/somativa-frotas
-   JWT_SECRET=sua_chave_secreta_aqui
-   ```
-4. **Inicie o servidor**
-   ```bash
-   npm run dev
-   ```
+```mermaid
+classDiagram
 
----
+    class Motorista{
+        +String id
+        +String nome
+        +String cnh
+        +String telefone
+        +CRUD()
+        +login()
+        +logout()
+    }
 
-## 📈 Resultado Esperado
+    class Veiculo{
+        +String id
+        +String placa
+        +String modelo
+        +Number ano
+        +Number kmAtual
+        +Boolean alertaManutencao
+        +CRUD()
+    }
 
-Com o SGF, a LogiMax Transportes poderá:
-- Controlar digitalmente a alocação de motoristas e veículos;
-- Acompanhar histórico de viagens e quilometragem;
-- Evitar atrasos de manutenção com alertas automáticos;
-- Garantir maior eficiência e segurança operacional da frota.
+    class Viagem{
+        +String id
+        +String origem
+        +String destino
+        +Enum status
+        +Date dataInicio
+        +Date dataFim
+        +Number kmFinal
+        +String idMotorista
+        +String idVeiculo
+        +CRUD()
+    }
+
+    Motorista "1"--"1..*" Viagem: "realiza"
+    Veiculo "1"--"1..*" Viagem: "é utilizado em"
+```
+
+### 2. Caso de Uso
+
+```mermaid
+graph TD
+
+    subgraph "SGF"
+        caso1([Fazer Login])
+        caso2([Gerenciar Veículos - CRUD])
+        caso3([Gerenciar Motoristas - CRUD])
+        caso4([Gerenciar Viagens - CRUD])
+        caso5([Atualizar Quilometragem])
+        caso6([Emitir Alerta de Manutenção])
+        caso7([Acessar Dashboard])
+    end
+
+    Gestor([👨‍💼 Gestor de Frota])
+    Motorista([🚚 Motorista])
+
+    Gestor --> caso1
+    Gestor --> caso2
+    Gestor --> caso3
+    Gestor --> caso4
+    Gestor --> caso7
+
+    Motorista --> caso1
+    Motorista --> caso4
+    Motorista --> caso5
+    Motorista --> caso7
+
+    caso4 --> caso6
+```
+
+### 3. Fluxo
+
+```mermaid
+graph TD
+    A[Início] --> B{Acessa a Tela de Login}
+    B --> C[Preencher Email e Senha]
+    C --> D{Validar as Credenciais}
+    D -->|Sim| E[Gerar um Token JWT]
+    E --> F[Dashboard]
+    D -->|Não| G[Mensagem de Erro]
+    G --> B
+```
 
 ---
