@@ -144,4 +144,4 @@ graph TD
 ---
 
 Protótipos: 
-https://www.figma.com/design/vQCntJoRuYEAicqFbgdR2b/Untitled?node-id=0-1&m=dev&t=B2vB2ZhBcz3xJMDb-1
+https://www.figma.com/proto/vQCntJoRuYEAicqFbgdR2b/Untitled?node-id=0-1&t=9pcKXVX6K9qC4qj2-1

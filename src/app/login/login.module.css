@@ -1,0 +1,119 @@
+/* 
+  Login Page Styles
+  - Container: Centers the login form on the page.
+  - Form: The main login form card with a modern shadow.
+  - Typography: Styles for titles and labels.
+  - Inputs & Fields: Styles for input fields, including focus states.
+  - Button: Primary action button styles.
+  - Error State: Styles for displaying login errors.
+*/
+
+/* Main container */
+.container {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7f9fc; /* Softer background color */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Brand title styling */
+.brandTitle {
+  font-size: 2.5rem; /* Larger font size */
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 2rem; /* Space between title and form */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Login form card */
+.form {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Softer, more pronounced shadow */
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* Adjusted gap */
+}
+
+/* Form title */
+.title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2d3748; /* Darker, less harsh than black */
+  margin: 0;
+}
+
+
+
+/* Input fields */
+.input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #4a5568;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4299e1; /* A nice blue for focus */
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2); /* Focus ring */
+}
+
+/* Styling for the divs containing labels and inputs */
+.form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form label {
+  font-weight: 500;
+  color: #4a5568;
+}
+
+
+/* Submit button */
+.button {
+  background: linear-gradient(to right, #4299e1, #3182ce); /* Gradient for the button */
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(66, 153, 225, 0.4);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+}
+
+/* Error message */
+.error {
+  color: #c53030; /* A darker red */
+  font-size: 0.875rem;
+  text-align: center;
+  background-color: #fed7d7;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #fbb6b6;
+  margin: 0;
+}
